@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 // TODO 20150721より、次回はP104の動作確認以降からサンプルファイルをコピーしていく。
+// TODO 20150724より、コメント追加
 /**
  * 依頼登録サーブレット
  * @author
