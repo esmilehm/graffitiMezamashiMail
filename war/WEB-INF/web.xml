@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+  version="2.5">
+  
+
+  <!-- サーブレット名とサーブレットクラス（パッケージ名.クラス名）の関連付け -->
+  <!-- note 1.Index.html用のサーブレット登録 -->
+  <servlet>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>com.appsport.mezamashimail.IndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>WakeupTask</servlet-name>
+    <servlet-class>com.appsport.mezamashimail.WakeupTaskServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Wakeup</servlet-name>
+    <servlet-class>com.appsport.mezamashimail.WakeupServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Receive</servlet-name>
+    <servlet-class>com.appsport.mezamashimail.ReceiveServlet</servlet-class>
+  </servlet>
+  <!-- サーブレット名とURL（拡張子抜きのJSPファイル名）の関連付け -->
+  <!-- note 1.Index.jspとURLの紐付け -->
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WakeupTask</servlet-name>
+    <url-pattern>/task/wakeuptask</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Wakeup</servlet-name>
+    <url-pattern>/cron/wakeup</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Receive</servlet-name>
+    <url-pattern>/_ah/mail/eri@mezamashimail.appspotmail.com</url-pattern>
+  </servlet-mapping>
+
+  <!-- 文字コード用のフィルタ（サーブレット）登録 -->
+  <filter>
+    <!-- note 1.サーブレットフィルタの名前とクラスの指定 -->
+    <filter-name>Encoding</filter-name>
+    <filter-class>com.appsport.mezamashimail.EncodingFilter</filter-class>
+    <!-- note 2.サーブレットフィルタのinitメソッドで取得する設定情報 -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <!-- サーブレット名とURL（拡張子抜きのJSPファイル名）の関連付け -->
+  <filter-mapping>
+    <filter-name>Encoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- todo あとで記入する -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>admin</web-resource-name>
+      <url-pattern>/task/*</url-pattern>
+      <url-pattern>/cron/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <!-- エラー画面を表示する設定 -->
+  <error-page>
+    <!-- note 1.プログラムで処理されなかったエラーをキャッチして、error.htmlを表示させる -->
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/error.html</location>
+  </error-page>
+  <!-- URL省略時に表示させる画面の設定 -->
+  <welcome-file-list>
+    <!-- note 1.index.jsp内で、http://localhost.8888/indexにリダイレクト処理を記述 -->
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
