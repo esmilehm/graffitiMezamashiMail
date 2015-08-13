@@ -58,14 +58,17 @@ public class IndexServlet extends HttpServlet {
 
         /* 入力チェック */
         boolean hasErrors = false;
+        /* emailが空欄かチェック */
         if (email == null || "".equals(email)) {
             req.setAttribute("email_error", true);
             hasErrors = true;
         }
+        /* 呼び方が空欄可チェック */
         if (nickname == null || "".equals(nickname)) {
             req.setAttribute("nickname_error", true);
             hasErrors = true;
         }
+        /* 日付を指定された日付で変換を行い、エラーがおきないかチェック */
         Calendar calendar = Calendar.getInstance(TimeZone
                 .getTimeZone("Asia/Tokyo"));
         calendar.clear();
