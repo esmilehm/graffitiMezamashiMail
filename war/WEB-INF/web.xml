@@ -39,8 +39,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <url-pattern>/cron/wakeup</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <!-- @アプリケーションIDが誤っていると受信出来ないので注意 -->
     <servlet-name>Receive</servlet-name>
-    <url-pattern>/_ah/mail/eri@mezamashimail.appspotmail.com</url-pattern>
+    <url-pattern>/_ah/mail/eri@mezamashimail-1036.appspotmail.com</url-pattern>
   </servlet-mapping>
 
   <!-- 文字コード用のフィルタ（サーブレット）登録 -->

@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ title:スケジュールタスクの定義ファイル
+ note :決められた時間あるいは決められた間隔でリクエストを出すスケジュール定義したファイル
+ ・urlタグ 　　　　 ：スケジュールが呼び出すリクエストのアドレス。通常はサーブレットのURL
+ ・scheduleタグ　　：このスケジュールが起動されるタイミングを指定する。
+ 　　　　　　　　　　　・every 5 minutes（５分おき）
+ 				　・every 12 minutes（１２時間おき）
+ 				　・2nd,third mon,wed,thu of march 17:00（５月の第２、第３の月・水・木の17:00）
+ 				　・every monday 09:00（月曜日の9:00）
+ 				　・1st monday of sep,oct,nov 17:00（９月、１０月、１１月の第１月曜日の17:00）
+ 				　・every day 00:00（毎0:00時）
+ ・timezoneタグ　　：scheduleタグで日時を指定した時に、どのタイムゾーンとして解釈するかを指定する
+ -->
 <cronentries>
   <cron>
     <url>/cron/wakeup</url>

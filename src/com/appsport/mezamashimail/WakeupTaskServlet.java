@@ -55,7 +55,7 @@ public class WakeupTaskServlet extends HttpServlet {
                 calendar.setTime(alarm.getWakeupDate());
                 calendar.add(Calendar.MINUTE, 5);
                 alarm.setWakeupDate(calendar.getTime());
-                pm.makePersistent(alarm);
+                pm.makePersistent(alarm);	// エンティティ更新
             } else {
                 /* 2回目以降であれば依頼を削除する */
                 pm.deletePersistent(alarm);
@@ -71,7 +71,9 @@ public class WakeupTaskServlet extends HttpServlet {
     private void sendMail(String email, String nickname, int count)
             throws IOException {
         Message message = new Message();
-        message.setSender("eri@mezamashimail.appspotmail.com");
+    	//メールアドレスは、string@アプリケーションID.appspotmail.com で作成する事
+        //このアドレスがGAEで決められたルールから外れていると、送信されない。
+        message.setSender("eri@mezamashimail-1036.appspotmail.com");
         message.setTo(email);
         if (count == 0) {
             message.setSubject("時間だよー");

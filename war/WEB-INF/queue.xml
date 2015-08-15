@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ title:タスクキューの定義ファイル
+ note :タスクキューを利用するために必要なファイル
+ ・nameタグ：タスクキューの名前
+ ・rateタグ：タスクの実行時間　例）5/s（毎秒５タスク）＝１分当り最大３００通程度のメールが送れるらしい。
+ ・bucket-sizeタグ：同時に実行できるタスクの最大数
+ -->
 <queue-entries>
   <queue>
     <name>wakeup-queue</name>
