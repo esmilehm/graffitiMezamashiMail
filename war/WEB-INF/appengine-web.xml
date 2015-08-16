@@ -27,5 +27,11 @@
     stale session data. For details, see
     http://code.google.com/appengine/docs/java/config/appconfig.html#Enabling_Sessions
   -->
+  <!-- 
+    メールサービスの有効化・メール受信を可能にします。
+   -->
+  <inbound-services>
+    <service>mail</service>
+  </inbound-services>
 
 </appengine-web-app>
